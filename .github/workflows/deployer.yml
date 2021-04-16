@@ -29,8 +29,7 @@ jobs:
               StrictHostKeyChecking no
           END
       - name: Logon Site
-        run: |
-          ssh salvesite 'pwd -P'
+        run: cat ~/.ssh/known_hosts
       - name: Deploy Bolt
         uses: deployphp/action@master
         with:
