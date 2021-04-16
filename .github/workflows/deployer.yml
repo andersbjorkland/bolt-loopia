@@ -1,5 +1,5 @@
 name: Deploy Bolt
-on: [workflow_dispatch]
+on: [push]
 jobs:
   deploy:
     name: Deploy to prod
@@ -10,9 +10,5 @@ jobs:
         uses: shivammathur/setup-php@master
         with:
           php-version: 7.4
-      - name: Deploy
-        uses: deployphp/action@master
-        with:
-          private-key: ${{ secrets.PRIVATE_KEY }}
-          known-hosts: ${{ secrets.KNOWN_HOSTS }}
-          dep: deploy
+      - name: Config Check
+        run: echo "HELLO FRUITS!!"
