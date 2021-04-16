@@ -48,5 +48,8 @@
             "require": "^5.1"
         },
         "public-dir": "public"
+    },
+    "require-dev": {
+        "deployer/deployer": "^6.8"
     }
 }
