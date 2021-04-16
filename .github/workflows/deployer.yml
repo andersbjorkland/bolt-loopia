@@ -28,6 +28,9 @@ jobs:
               IdentityFile ~/.ssh/staging.key
               StrictHostKeyChecking no
           END
+      - name: Logon Site
+        run: |
+          ssh salvesite 'pwd -P'
       - name: Deploy Bolt
         uses: deployphp/action@master
         with:
