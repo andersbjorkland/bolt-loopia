@@ -4,7 +4,7 @@ namespace Deployer;
 require 'recipe/symfony.php';
 
 // Project name
-set('application', 'Bolt Loopia');
+set('application', 'bolt');
 
 // Project repository
 set('repository', 'https://github.com/andersbjorkland/bolt-loopia');
@@ -22,7 +22,7 @@ set('allow_anonymous_stats', false);
 
 // Hosts
 
-host(['salvedigital.site'])
+host(['salvesite'])
     ->set('deploy_path', '~/{{application}}');    
     
 // Tasks

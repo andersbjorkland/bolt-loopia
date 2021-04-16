@@ -10,10 +10,27 @@ jobs:
         uses: shivammathur/setup-php@master
         with:
           php-version: 7.4
-      - name: Config Check
+      - name: Configure SSH
         env:
           SUPER_SECRET: ${{ secrets.PRIVATE_KEY }}
           KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }}
+          TARGET_HOST: ${{ secrets.TARGET_HOST }}
+          TARGET_USER: ${{ secrets.TARGET_USER }}
         run: |
-          echo "$SUPER_SECRET"
-          echo "$KNOWN_HOSTS"
+          mkdir -p ~/.ssh/
+          echo "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          echo "$SUPER_SECRET" > ~/.ssh/staging.key
+          chmod 600 ~/.ssh/staging.key
+          cat >>~/.ssh/staging.key <<END
+            Host salvesite
+              HostName $TARGET_HOST
+              User $TARGET_USER
+              IdentityFile ~/.ssh/staging.key
+              StrictHostKeyChecking no
+          END
+      - name: Deploy Bolt
+        uses: deployphp/action@master
+        with:
+          private-key: ${{ secrets.PRIVATE_KEY }}
+          known-hosts: ${{ secrets.KNOWN_HOSTS }}
+          dep: deploy
