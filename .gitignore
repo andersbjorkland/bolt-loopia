@@ -76,5 +76,4 @@ appveyor.yml
 /phpunit.xml
 ###< phpunit/phpunit ###
 
-/.github/
 /.idea/
