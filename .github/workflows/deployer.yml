@@ -11,4 +11,4 @@ jobs:
         with:
           php-version: 7.4
       - name: Config Check
-        run: echo "HELLO FRUITS!!"
+        run: echo "$SSH_KEY"
