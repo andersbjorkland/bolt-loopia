@@ -13,4 +13,7 @@ jobs:
       - name: Config Check
         env:
           SUPER_SECRET: ${{ secrets.PRIVATE_KEY }}
-        run: echo "$SUPER_SECRET"
+          KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }}
+        run: |
+          echo "$SUPER_SECRET"
+          echo "$KNOWN_HOSTS"
