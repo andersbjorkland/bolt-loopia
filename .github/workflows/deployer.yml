@@ -11,4 +11,6 @@ jobs:
         with:
           php-version: 7.4
       - name: Config Check
-        run: echo "$PRIVATE_KEY"
+        env:
+          SUPER_SECRET: ${{ secrets.PRIVATE_KEY }}
+        run: echo "$SUPER_SECRET"
