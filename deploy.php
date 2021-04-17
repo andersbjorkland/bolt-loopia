@@ -3,7 +3,8 @@ namespace Deployer;
 
 require 'recipe/symfony4.php';
 
-$destinationDir = "salvedigital.site/";
+set('public_dir', 'public_html/');
+set('project_dir', 'salvedigital.site/');
 
 // Project name
 set('application', 'bolt');
@@ -25,12 +26,16 @@ set('allow_anonymous_stats', false);
 // Hosts
 
 host('salvesite')
-    ->set('deploy_path', '~/' . $destinationDir . '{{application}}');
+    ->set('deploy_path', '~/{{project_dir}}{{application}}');
     
 // Tasks
 
 task('build', function () {
     run('cd {{release_path}} && build');
+});
+
+task('symlink:public', function() {
+    run('ln -s {{release_path}}/public/*  {{public_dir}} && ln -s {{release_path}}/public/.[^.]* {{public_dir}}');
 });
 
 // [Optional] if deploy fails automatically unlock.
