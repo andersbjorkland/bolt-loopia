@@ -22,17 +22,13 @@ set('allow_anonymous_stats', false);
 
 // Hosts
 
-host(['salvesite'])
+host('salvesite')
     ->set('deploy_path', '~/{{application}}');    
     
 // Tasks
 
 task('build', function () {
     run('cd {{release_path}} && build');
-});
-
-task('demo', function () {
-    writeln('HELLO WORLD!');
 });
 
 // [Optional] if deploy fails automatically unlock.
