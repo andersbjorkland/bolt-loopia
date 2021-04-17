@@ -29,8 +29,8 @@ jobs:
               StrictHostKeyChecking no
           END
           ssh salvesite 'pwd'
-      - name: Install Dependencies
-        run: composer install --dev
+      - name: Install Deployer
+        run: composer require deployer/deployer --dev
       - name: Deploy Bolt
         uses: deployphp/action@master
         with:
