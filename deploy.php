@@ -31,6 +31,10 @@ task('build', function () {
     run('cd {{release_path}} && build');
 });
 
+task('demo', function () {
+    writeln('HELLO WORLD!');
+});
+
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
 
