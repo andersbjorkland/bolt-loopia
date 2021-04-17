@@ -4,7 +4,7 @@ namespace Deployer;
 require 'recipe/symfony4.php';
 
 set('public_dir', 'public_html/');
-set('project_dir', 'salvedigital.site/');
+set('project_dir', 'salvedigital.site/bolt');
 
 // Project name
 set('application', 'bolt');
@@ -26,7 +26,7 @@ set('allow_anonymous_stats', false);
 // Hosts
 
 host('salvesite')
-    ->set('deploy_path', '~/{{project_dir}}{{application}}');
+    ->set('deploy_path', '~/{{project_dir}}');
     
 // Tasks
 
@@ -40,6 +40,7 @@ task('symlink:public', function() {
 
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
+after('deploy:unlock', 'symlink:public');
 
 // Migrate database before symlink new release.
 
