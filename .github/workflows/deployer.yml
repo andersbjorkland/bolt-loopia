@@ -29,8 +29,6 @@ jobs:
               StrictHostKeyChecking no
           END
           ssh salvesite 'pwd'
-      - name: Logon Site
-        run: ssh salvesite 'pwd'
       - name: Install Dependencies
         run: composer install --dev
       - name: Deploy Bolt

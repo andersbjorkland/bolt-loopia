@@ -1,7 +1,9 @@
 <?php
 namespace Deployer;
 
-require 'recipe/symfony.php';
+require 'recipe/symfony4.php';
+
+$destinationDir = "salvedigital.site/";
 
 // Project name
 set('application', 'bolt');
@@ -23,7 +25,7 @@ set('allow_anonymous_stats', false);
 // Hosts
 
 host('salvesite')
-    ->set('deploy_path', '~/{{application}}');    
+    ->set('deploy_path', '~/' . $destinationDir . '{{application}}');
     
 // Tasks
 
