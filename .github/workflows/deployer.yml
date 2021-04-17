@@ -30,7 +30,7 @@ jobs:
           END
           ssh salvesite 'pwd'
       - name: Install Deployer
-        run: composer install deployer/deployer --dev
+        run: composer install --dev
       - name: Deploy Bolt
         uses: deployphp/action@master
         with:
