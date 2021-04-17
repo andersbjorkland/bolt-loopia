@@ -26,6 +26,7 @@ set('allow_anonymous_stats', false);
 // Hosts
 
 host('salvesite')
+    ->set('http_user', 'tmyyjr')
     ->set('deploy_path', '{{project_dir}}');
     
 // Tasks
