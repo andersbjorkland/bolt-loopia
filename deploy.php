@@ -16,7 +16,7 @@ set('repository', 'https://github.com/andersbjorkland/bolt-loopia');
 set('git_tty', false);
 
 // Shared files/dirs between deploys 
-add('shared_files', []);
+add('shared_files', ['.env']);
 add('shared_dirs', []);
 
 // Writable dirs by web server 
