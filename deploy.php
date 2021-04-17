@@ -34,13 +34,13 @@ task('build', function () {
     run('cd {{release_path}} && build');
 });
 
+// Run after first deployment to add public content to public directory via symlink.
 task('symlink:public', function() {
     run('ln -s {{release_path}}/public/*  {{public_dir}} && ln -s {{release_path}}/public/.[^.]* {{public_dir}}');
 });
 
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
-after('deploy:unlock', 'symlink:public');
 
 // Migrate database before symlink new release.
 
