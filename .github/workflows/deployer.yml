@@ -28,7 +28,7 @@ jobs:
               IdentityFile ~/.ssh/staging.key
               StrictHostKeyChecking no
           END
-          ssh salvesite 'pwd'
+          ssh satius 'pwd'
       - name: Install Deployer
         run: composer install --dev
       - name: Deploy Bolt
