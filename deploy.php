@@ -3,8 +3,8 @@ namespace Deployer;
 
 require 'recipe/symfony4.php';
 
-set('public_dir', '~/salvedigital.site/public_html/');
-set('project_dir', '~/salvedigital.site/bolt');
+set('public_dir', '/www/');
+set('project_dir', '~/bolt');
 
 // Project name
 set('application', 'bolt');
@@ -25,8 +25,8 @@ set('allow_anonymous_stats', false);
 
 // Hosts
 
-host('salvesite')
-    ->set('http_user', 'tmyyjr')
+host('satius')
+    ->set('http_user', 'satius.digital')
     ->set('deploy_path', '{{project_dir}}');
     
 // Tasks
