@@ -21,6 +21,8 @@ if (strpos($_SERVER['SERVER_NAME'], 'localhost') !== false
 
 require $vendors;
 
+(new Dotenv())->loadEnv($envs);
+
 $env = $_SERVER['APP_ENV'] ?? 'dev';
 $debug = (bool) ($_SERVER['APP_DEBUG'] ?? ($env !== 'prod'));
 
