@@ -9,13 +9,19 @@ use Symfony\Component\HttpFoundation\Request;
 
 require __DIR__.'/../vendor/autoload.php';
 
-// The check is to ensure we don't use .env in production
-if (! isset($_SERVER['APP_ENV'])) {
-    if (! class_exists(Dotenv::class)) {
-        throw new \RuntimeException('APP_ENV environment variable is not defined. You need to define environment variables for configuration or add "symfony/dotenv" as a Composer dependency to load variables from a .env file.');
-    }
-    (new Dotenv())->bootEnv(__DIR__.'/../.env');
+$vendors = '';
+$envs = '';
+
+if (strpos($_SERVER['SERVER_NAME'], 'localhost') !== false
+    || strpos($_SERVER['SERVER_NAME'], '127.0.0.1') !== false) {
+    $vendors =  dirname(__DIR__).'/vendor/autoload.php';
+    $envs = dirname(__DIR__).'/.env';
+} else {
+    $vendors = dirname( __DIR__ ) . '/httpd.private/bolt/release/vendor/autoload.php';
+    $envs    = dirname( __DIR__ ) . '/httpd.private/bolt/release/.env';
 }
+
+require $vendors;
 
 $env = $_SERVER['APP_ENV'] ?? 'dev';
 $debug = (bool) ($_SERVER['APP_DEBUG'] ?? ($env !== 'prod'));
